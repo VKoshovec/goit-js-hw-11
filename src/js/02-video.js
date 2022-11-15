@@ -7,8 +7,9 @@ let currentTime = JSON.parse(localStorage.getItem ('videoplayer-current-time'));
 
 player.setCurrentTime (currentTime); 
 
-player.on ('timeupdate', onPlay);
+player.on ('timeupdate', throttle( onPlay, 1000));
 
 function onPlay (event) {
-localStorage.setItem ('videoplayer-current-time', JSON.stringify(event.seconds)); 
+    let curSec = JSON.stringify(event.seconds);
+    localStorage.setItem ('videoplayer-current-time', curSec); 
 }
