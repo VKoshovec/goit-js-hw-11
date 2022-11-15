@@ -1,6 +1,7 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
+
 // Описан в документации
 import SimpleLightbox from "simplelightbox";
 // Дополнительный импорт стилей
@@ -24,4 +25,4 @@ var lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,    
 });
-console.log(galleryItems);
+// console.log(galleryItems);
