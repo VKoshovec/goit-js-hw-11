@@ -20,6 +20,10 @@ refs.timerCaptionFields.forEach(elem => elem.style.cssText = 'font-size: 20px; t
 refs.timerPicker.style.cssText = style="width: 300px; height: 40px; margin-left: 20px; font-size: 18px; border-radius: 4px"; 
 refs.timerButton.style.cssText = 'width: 100px; height: 40px; font-size: 18px; font-weight: 700';
 
-
+// Flatpickr init
+flatpickr(refs.timerPicker, 
+   { enableTime: true,
+   dateFormat: "Y-m-d H:i",}
+);
 
 
