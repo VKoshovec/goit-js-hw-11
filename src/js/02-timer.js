@@ -84,7 +84,7 @@ function setDisabledButton(val){
 
 function startTimer() {
    
-   setInterval (() => {
+   const timer = setInterval (() => {
       let time = convertMs(timerStartValue-new Date().getTime());
       refs.timerValueFields[0].innerHTML = addZero(time.days);
       refs.timerValueFields[1].innerHTML = addZero(time.hours);
