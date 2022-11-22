@@ -2,6 +2,9 @@
 import flatpickr from "flatpickr";
 // Дополнительный импорт стилей
 import "flatpickr/dist/flatpickr.min.css";
+// import { padStart } from "lodash";
+//import Notiflix
+import Notiflix from 'notiflix';
 let timerStartValue = 0;
 
 const refs = {
@@ -28,7 +31,8 @@ const options = {
 
      if (comparedDate < 0) {
       setDisabledButton (false);
-      alert ("Please choose a date in the future");
+      // alert ("Please choose a date in the future");
+      Notiflix.Notify.failure("Please choose a date in the future");
       return;
      }
 
@@ -37,6 +41,7 @@ const options = {
    },
 
  };
+
 
 // Timer styling
 refs.timerBox.style.display = 'flex';
@@ -47,7 +52,7 @@ refs.timerPicker.style.cssText = style="width: 300px; height: 40px; margin-left:
 refs.timerButton.style.cssText = 'width: 100px; height: 40px; font-size: 18px; font-weight: 700';
 
 refs.timerButton.setAttribute('disabled', true);
-refs.timerButton.addEventListener('click', startTimer);
+refs.timerButton.addEventListener('click', timerStart);
 
 // Flatpickr init
 flatpickr(
@@ -82,19 +87,28 @@ function setDisabledButton(val){
    }
 };
 
-function startTimer() {
-   
-   const timer = setInterval (() => {
-      let time = convertMs(timerStartValue-new Date().getTime());
-      refs.timerValueFields[0].innerHTML = addZero(time.days);
-      refs.timerValueFields[1].innerHTML = addZero(time.hours);
-      refs.timerValueFields[2].innerHTML = addZero(time.minutes);
-      refs.timerValueFields[3].innerHTML = addZero(time.seconds);
+function  timerStart() {
+   Notiflix.Notify.success("Timer starts!!!");
+   setDisabledButton(false);
+   const timerId = setInterval (() => {
+      let timeChack = timerStartValue-new Date().getTime();
+      
+      if (timeChack > 0) {
+         let time = convertMs(timeChack);
+         refs.timerValueFields[0].innerHTML = addLeadingZero(time.days);
+         refs.timerValueFields[1].innerHTML = addLeadingZero(time.hours);
+         refs.timerValueFields[2].innerHTML = addLeadingZero(time.minutes);
+         refs.timerValueFields[3].innerHTML = addLeadingZero(time.seconds);
+      } else {
+         clearInterval (timerId);
+         Notiflix.Notify.info("Timer stoped!!!")
+      };
    }, 
    1000);
-} 
+};
 
-function addZero (val) {
+function addLeadingZero (val) {
    let int = Number(val);
-   return int<10?"0"+val:val;
+   return int < 10 ? "0"+val:val;
+   // padStart
 }
