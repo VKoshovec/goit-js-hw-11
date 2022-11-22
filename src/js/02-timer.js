@@ -110,5 +110,5 @@ function  timerStart() {
 function addLeadingZero (val) {
    let int = Number(val);
    return int < 10 ? "0"+val:val;
-   // padStart
+   // padStart ()
 }
