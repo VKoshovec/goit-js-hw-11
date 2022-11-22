@@ -48,7 +48,7 @@ refs.timerBox.style.display = 'flex';
 refs.timerBoxCells.forEach(elem => elem.style.cssText = 'display: flex; flex-direction: column; justify-content: center; margin: 20px;');
 refs.timerValueFields.forEach(elem => elem.style.cssText = 'display: flex; justify-content: center; font-size: 24px; font-weight: 600;');
 refs.timerCaptionFields.forEach(elem => elem.style.cssText = 'font-size: 20px; text-transform: uppercase');
-refs.timerPicker.style.cssText ="width: 300px; height: 40px; margin-left: 20px; font-size: 18px; border-radius: 4px"; 
+refs.timerPicker.style.cssText = 'width: 300px; height: 40px; margin-left: 20px; font-size: 18px; border-radius: 4px'; 
 refs.timerButton.style.cssText = 'width: 100px; height: 40px; font-size: 18px; font-weight: 700';
 
 refs.timerButton.setAttribute('disabled', true);
