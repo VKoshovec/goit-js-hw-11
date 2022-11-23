@@ -2,9 +2,10 @@
 import flatpickr from "flatpickr";
 // Дополнительный импорт стилей
 import "flatpickr/dist/flatpickr.min.css";
-// import { padStart } from "lodash";
+import { padStart } from "lodash";
 //import Notiflix
 import Notiflix from 'notiflix';
+
 let timerStartValue = 0;
 
 const refs = {
@@ -90,6 +91,7 @@ function setDisabledButton(val){
 function  timerStart() {
    Notiflix.Notify.success("Timer starts!!!");
    setDisabledButton(false);
+   refs.timerPicker.setAttribute('disabled', true);
    const timerId = setInterval (() => {
       let timeChack = timerStartValue-new Date().getTime();
       
@@ -101,14 +103,18 @@ function  timerStart() {
          refs.timerValueFields[3].innerHTML = addLeadingZero(time.seconds);
       } else {
          clearInterval (timerId);
-         Notiflix.Notify.info("Timer stoped!!!")
+         refs.timerPicker.removeAttribute('disabled');
+         Notiflix.Notify.info("Timer stopped!!!")
       };
    }, 
    1000);
 };
 
 function addLeadingZero (val) {
-   let int = Number(val);
-   return int < 10 ? "0"+val:val;
-   // padStart ()
+   
+   //alternative way
+   // let int = Number(val);
+   // return int < 10 ? "0"+val:val;
+
+   return padStart (val,2,"0");
 }
