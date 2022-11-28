@@ -1,17 +1,20 @@
 import Notiflix from "notiflix";
+import { trim } from 'lodash';
 
 export function fetchCountry (countryName) {
-
+    
     const searchParams = new URLSearchParams({
         fields: "name,capital,population,flags,languages",
-      });
+    });
+
+    const fetchString = `https://restcountries.com/v2/name/${trim(countryName)}?${searchParams}`;
         
-    return fetch(`https://restcountries.com/v2/name/${countryName}?${searchParams}`).then(response => 
+    return fetch(fetchString).then(response => 
     {
         if(response.ok) {
             return response.json();
         } else {
             Notiflix.Notify.failure(`Oops, there is no country with that name "${countryName}"`)
         }
-    })
+    });
 }
