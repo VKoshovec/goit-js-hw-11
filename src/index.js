@@ -30,13 +30,18 @@ function onInput (event) {
     const searchName = trim(event.target.value);
 
     if(trim(searchName)) {
-        Notiflix.Loading.dots("Loading...");
+
+        searcStart();
         fetchCountry(searchName).then(json => {
+
             chackJson (json, renderArrJson, renderOneCountryJson);  
-            Notiflix.Loading.remove();        
+            searchFinish ();
+              
         }).catch(err => {
-            Notiflix.Loading.remove();
-            Notiflix.Notify.failure(`Oops, there is no country with that name "${searchName}`)
+            
+            searchFinish ();
+            Notiflix.Notify.failure(`Oops, there is no country with that name "${searchName}`);
+
         });  
     }
 }
@@ -101,3 +106,14 @@ function clearAllInfo () {
     refs.countryList.innerHTML = '';
 
 }
+
+function searcStart () {
+    Notiflix.Loading.dots("Loading...");
+    refs.inputCountry.setAttribute ('disabled', true);
+}
+
+function searchFinish () {
+    Notiflix.Loading.remove();
+    refs.inputCountry.removeAttribute('disabled');
+}
+
