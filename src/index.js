@@ -108,12 +108,13 @@ function clearAllInfo () {
 }
 
 function searcStart () {
-    Notiflix.Loading.dots("Loading...");
+    Notiflix.Loading.standard("Searching...");
     refs.inputCountry.setAttribute ('disabled', true);
 }
 
 function searchFinish () {
     Notiflix.Loading.remove();
     refs.inputCountry.removeAttribute('disabled');
+    refs.inputCountry.focus();
 }
 
