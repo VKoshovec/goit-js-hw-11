@@ -10,11 +10,53 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  margin: 0;
 }
 
-#search-box {
-  font: inherit;
-  padding: 8px;
-  max-width: 320px;
-  margin-bottom: 16px;
+.search-form {
+  display: flex;
+
+  width: 100%;
+  height: 10vh;
+
+  background-color: rgb(53, 44, 185);
+  margin: 0;
+  padding: 0;
+
+}
+
+.search-input {
+
+  width: 20vw;
+  height: 5vh;
+  border-radius: 4;
+  margin-left: calc(50vw - 12vw);
+
+  margin-top: 2.5vh;
+
+  border: 0;
+
+} 
+
+.search-button {
+
+  position: relative;
+
+  height: 5vh;
+  width: 2vw;
+
+  background-image: url('../search-icon.webp');
+  background-position: center;
+  background-size: 1vw;
+  background-repeat: no-repeat;
+  border-radius: 0 4 4 0;
+
+  border: 0;
+
+  margin-left: -2vw;
+  margin-top: 2.5vh;
+}
+
+.load-more {
+  display: none;
 }
