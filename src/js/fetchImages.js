@@ -1,19 +1,35 @@
 import Notiflix from "notiflix";
-import { trim } from 'lodash';
 
+const axios = require('axios').default;
 
-export function fetchImages (imgName) {
-    
-//     const searchParams = new URLSearchParams({
-//         fields: "name,capital,population,flags,languages",
-//     });
+export async function fetchImages (imgName, currentPage) {
 
-//     const fetchString = `https://restcountries.com/v2/name/${trim(countryName)}?${searchParams}`;
+    const KEY = '31787922-9868af6ef14d155071060c1ed';
+    const URL = 'https://pixabay.com/api/';
+    const params = {
+            key: `${KEY}`,
+            q: imgName,
+            image_type: "photo",
+            orientation: "horizontal",
+            safesearch: "true",
+            per_page: 40,
+            page: currentPage,
+        };
+
+    try {
+
+        const response = await axios.get( URL, { params: params} );
+        const result = await response.data;
+
+        if (result.total === 0){
+
+            Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+
+        }
+
+        return result;    
+
+    } catch (error) {
         
-//     return fetch(fetchString).then(response => {
-//         if (!response.ok) {
-//            throw new Error(response.status) 
-//         } 
-//         return response.json();
-//     });
+    }
 }
