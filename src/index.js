@@ -2,6 +2,8 @@ import Notiflix from 'notiflix';
 import './css/styles.css';
 import { fetchImages } from './js/fetchImages';
 import { renderImage } from './js/renderImage';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 // vars
 const currentPage = 1;
@@ -9,6 +11,13 @@ const refs = {
     searchForm: document.querySelector('#search-form'),
     galary:     document.querySelector('.gallery'),
 };
+
+var lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,    
+});
+
+// var lightbox = new SimpleLightbox('.gallery a', { /* options */ });
 
 //events
 refs.searchForm.addEventListener('submit', onSubmit);

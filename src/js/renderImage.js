@@ -3,23 +3,25 @@ export function renderImage (imageArr, collectionElement) {
 
 const imgHTML = imageArr.map(elem =>
 `<div class="photo-card">
+<a href="${elem.largeImageURL}">
 <img src="${elem.webformatURL}" alt="${elem.tags}" loading="lazy" class="card-img"/>
+</a>
 <div class="info">
   <p class="info-item">
     <b>Likes</b>
-    <p>${elem.likes}</p>
+    <span>${elem.likes}</span>
   </p>
   <p class="info-item">
     <b>Views</b>
-    <p>${elem.views}</p>
+    <span>${elem.views}</span>
   </p>
   <p class="info-item">
     <b>Comments</b>
-    <p>${elem.comments}</p>
+    <span>${elem.comments}</span>
   </p>
   <p class="info-item">
     <b>Downloads</b>
-    <p>${elem.downloads}</p>
+    <span>${elem.downloads}</span>
   </p>
 </div>
 </div>`    
