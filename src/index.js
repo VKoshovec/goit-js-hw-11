@@ -20,6 +20,9 @@ function onSubmit (e) {
   e.preventDefault();
   const queryText = e.target.elements.searchQuery.value;
 
-  fetchImages(queryText, currentPage).then(resp => console.log(resp));
-  renderImage ();
+  fetchImages(queryText, currentPage).then(response => {
+    console.log(response.hits);
+    renderImage (response.hits, refs.galary);
+  }).catch (err => console.log("Bad request"));
+
 }
