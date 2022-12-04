@@ -1,11 +1,11 @@
-export function renderImage (imageArr, collectionElement) {
-  // largeImageURL
+export function renderImage (imageArr, collectionElement, firstRender) {
 
-const imgHTML = imageArr.map(elem =>
-`<div class="photo-card">
-<a href="${elem.largeImageURL}">
+const imgHTML = imageArr.map (elem =>
+`<a href="${elem.largeImageURL}">
+<div class="photo-card">
+
 <img src="${elem.webformatURL}" alt="${elem.tags}" loading="lazy" class="card-img"/>
-</a>
+
 <div class="info">
   <p class="info-item">
     <b>Likes</b>
@@ -24,10 +24,17 @@ const imgHTML = imageArr.map(elem =>
     <span>${elem.downloads}</span>
   </p>
 </div>
-</div>`    
+</div>
+</a>`    
 ).join("");
 
-console.log(imgHTML);
-collectionElement.innerHTML = imgHTML;
+// console.log(imgHTML);
+
+if (firstRender) {
+  collectionElement.innerHTML = "";
+  collectionElement.innerHTML = imgHTML;
+} else if (!firstRender){
+  collectionElement.insertAdjacentHTML('beforeend', imgHTML);
+}
 
 };

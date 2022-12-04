@@ -28,7 +28,7 @@ body {
 .search-input {
 
   width: 20vw;
-  height: 5vh;
+  height: 20px;
   border-radius: 4;
   margin-left: calc(50vw - 12vw);
 
@@ -42,7 +42,7 @@ body {
 
   position: relative;
 
-  height: 5vh;
+  height: 20px;
   width: 2vw;
 
   background-image: url('../search-icon.webp');
@@ -61,11 +61,18 @@ body {
   display: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .gallery{
   margin: 0;
   padding: 0;
 
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
 
   display: flex;
   flex-wrap: wrap;
@@ -76,10 +83,12 @@ body {
 
 .photo-card {
   display: block;
-  width: calc(100vw/4-(20px*3));
-  height: calc(100vh/2-(20px*2));
-  box-shadow: 1px 1px 2px 2px #5c5454,
-  4px 4px 2px 2px #a39b9b;
+  width: 300px;
+  /* width: calc(100vw/4-(20px*3)); */
+  height: 300px;
+  /* height: calc(100vh/2-(20px*2)); */
+  box-shadow: 2px 2px 3px 2px #5c5454,
+  6px 6px 3px 2px #a39b9b;
 }
 
 .card-img {
@@ -94,14 +103,19 @@ body {
   flex-direction: row;
   justify-content: space-around;
   margin: 0px;
-  padding: 0px;
+  padding-top: 10px;
 }
 
 .info-item{
-    margin: 0px;
+  margin: 0px;
   padding: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.info-item span {
+  color: black;
+  margin-top: 5px;
+  font-size: 14px;
+}
