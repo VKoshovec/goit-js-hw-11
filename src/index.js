@@ -5,7 +5,7 @@ import { renderImage } from './js/renderImage';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { throttle } from 'lodash';
-// import simpleLightbox from 'simplelightbox';
+
 
 // vars
 let currentPage = 1;
@@ -14,6 +14,7 @@ const refs = {
     galary:     document.querySelector('.gallery'),
 };
 
+//lightBox init
 var lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,    
@@ -34,7 +35,7 @@ function onSubmit (e) {
   fetchImages(queryText, currentPage).then(response => {
 
     renderImage (response.hits, refs.galary, true);
-    //lightbox.refresh();
+    lightbox.refresh();
     currentPage += 1;
 
   }).catch (err => console.log("Bad request"));
