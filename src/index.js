@@ -4,7 +4,7 @@ import { fetchImages } from './js/fetchImages';
 import { renderImage } from './js/renderImage';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { throttle } from 'lodash';
+import { isEmpty, throttle } from 'lodash';
 
 
 // vars
@@ -34,6 +34,9 @@ function onSubmit (e) {
   currentPage = 1;
     
   const queryText = e.target.elements.searchQuery.value;
+  console.log(queryText.trim())
+
+  if ( !isEmpty(queryText.trim())) {
 
   fetchImages(queryText, currentPage).then(response => {
     
@@ -42,7 +45,8 @@ function onSubmit (e) {
     currentPage += 1;
 
   }).catch (err => console.log("Bad request"));
-
+ 
+ } else (Notiflix.Notify.failure("Empty imput for search!"))
 };
 
 
