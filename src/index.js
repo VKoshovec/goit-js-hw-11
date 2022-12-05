@@ -48,7 +48,7 @@ function onSubmit (e) {
 
 function onScroll (e) {
 
-if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-100) {
+if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-150) {
   
   const queryText = refs.searchForm.elements.searchQuery.value;
 
@@ -59,9 +59,8 @@ if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-100) {
     currentPage += 1;
     slowScroll (); 
   }).catch (err => console.log("Bad request"));
-  
 }
-}
+};
 
 function slowScroll () {
   const { height: cardHeight } = document
@@ -72,4 +71,4 @@ function slowScroll () {
     top: cardHeight * 2,
     behavior: "smooth",
   });
-}
+};
