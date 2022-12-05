@@ -37,7 +37,7 @@ export async function fetchImages (imgName, currentPage) {
                 Notiflix.Notify.warning (`Page ${currentPage} of ${totalPages}. End of results`)
             }
   
-            return result;
+            // return result;
         }
         
         return result;    

@@ -34,7 +34,7 @@ function onSubmit (e) {
   currentPage = 1;
     
   const queryText = e.target.elements.searchQuery.value;
-  console.log(queryText.trim())
+  // console.log(queryText.trim())
 
   if ( !isEmpty(queryText.trim())) {
 
