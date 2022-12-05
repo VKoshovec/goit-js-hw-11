@@ -67,8 +67,7 @@ if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-150) {
 };
 
 function slowScroll () {
-  const { height: cardHeight } = document
-  .querySelector(".gallery")
+  const { height: cardHeight } = refs.galary
   .firstElementChild.getBoundingClientRect();
 
   window.scrollBy({
