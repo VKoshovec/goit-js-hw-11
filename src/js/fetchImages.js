@@ -31,11 +31,12 @@ export async function fetchImages (imgName, currentPage) {
             
             if (currentPage === 1) {
                 Notiflix.Notify.success (`Hooray! We found ${result.total} images in ${totalPages} pages.`)
-            } else (
+            } else if (currentPage > 1 && currentPage < totalPages) {
                 Notiflix.Notify.info (`Page ${currentPage} of ${totalPages}.`)
-            )
-            
-            console.log(result)
+            } else if (currentPage === totalPages) {
+                Notiflix.Notify.warning (`Page ${currentPage} of ${totalPages}. End of results`)
+            }
+  
             return result;
         }
         

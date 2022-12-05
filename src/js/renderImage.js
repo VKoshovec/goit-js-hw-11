@@ -28,11 +28,11 @@ const imgHTML = imageArr.map (elem =>
 </a>`    
 ).join("");
 
-// console.log(imgHTML);
-
 if (firstRender) {
+  
   collectionElement.innerHTML = "";
   collectionElement.innerHTML = imgHTML;
+
 } else if (!firstRender){
   collectionElement.insertAdjacentHTML('beforeend', imgHTML);
 }

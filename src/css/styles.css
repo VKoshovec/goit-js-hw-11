@@ -31,10 +31,10 @@ body {
 
 .search-input {
 
-  width: 20vw;
+  width: 30vw;
   height: 30;
   border-radius: 4;
-  margin-left: calc(50vw - 12vw);
+  margin-left: calc(50vw - 15vw);
 
   /* margin-top: 2.5vh; */
 
@@ -77,6 +77,7 @@ a {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 15vh;
+  padding-bottom: 2vh;
 
 
   display: flex;

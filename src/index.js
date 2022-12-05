@@ -22,18 +22,21 @@ var lightbox = new SimpleLightbox('.gallery a', {
 
 //events
 refs.searchForm.addEventListener('submit', onSubmit);
-window.addEventListener('scroll', throttle(onScroll, 500));
+window.addEventListener('scroll', throttle(onScroll, 300));
 
 //functions
 function onSubmit (e) {
   
+  e.preventDefault();
+
+  window.scrollTo(0,0);
+
   currentPage = 1;
     
-  e.preventDefault();
   const queryText = e.target.elements.searchQuery.value;
 
   fetchImages(queryText, currentPage).then(response => {
-
+    
     renderImage (response.hits, refs.galary, true);
     lightbox.refresh();
     currentPage += 1;
@@ -45,7 +48,7 @@ function onSubmit (e) {
 
 function onScroll (e) {
 
-if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-100) {
   
   const queryText = refs.searchForm.elements.searchQuery.value;
 
@@ -54,10 +57,19 @@ if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
     renderImage (response.hits, refs.galary, false);
     lightbox.refresh();
     currentPage += 1;
-
+    slowScroll (); 
   }).catch (err => console.log("Bad request"));
   
- }
-  
+}
 }
 
+function slowScroll () {
+  const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: "smooth",
+  });
+}
